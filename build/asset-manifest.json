@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.323879e8.chunk.css",
+    "main.js": "/static/js/main.93aa0e6a.chunk.js",
+    "main.js.map": "/static/js/main.93aa0e6a.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.1adbd23d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.1adbd23d.js.map",
+    "static/js/2.4c093274.chunk.js": "/static/js/2.4c093274.chunk.js",
+    "static/js/2.4c093274.chunk.js.map": "/static/js/2.4c093274.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.76a150c585d8bc4a9c52a0396b27d0cb.js": "/precache-manifest.76a150c585d8bc4a9c52a0396b27d0cb.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.323879e8.chunk.css.map": "/static/css/main.323879e8.chunk.css.map",
+    "static/js/2.4c093274.chunk.js.LICENSE.txt": "/static/js/2.4c093274.chunk.js.LICENSE.txt",
+    "static/media/cinema.jpg": "/static/media/cinema.50fdac4f.jpg",
+    "static/media/logo.png": "/static/media/logo.d38f8a7d.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1adbd23d.js",
+    "static/js/2.4c093274.chunk.js",
+    "static/css/main.323879e8.chunk.css",
+    "static/js/main.93aa0e6a.chunk.js"
+  ]
+}
