@@ -1,0 +1,34 @@
+#cast-view{
+    display: grid;
+    grid-template-columns: auto auto;
+    background: var(--light-blue);
+    font-size: 0.8em;   
+
+}
+
+#cast-view-info{
+    /* padding: 3em; */
+    background: var(--light-blue);
+}
+
+#cast-view-info *{
+    margin: 0.5em;
+    padding: 1em;
+}
+
+
+#cast-view-info #biography{
+    height: 20em;
+    padding: 2em;
+    overflow: auto;
+    background: var(--blue-focus);
+}
+
+#cast-view #cast-view-photo{
+    text-align: center;
+}
+
+#cast-image{
+    padding: 2em;
+    background: white;
+}
