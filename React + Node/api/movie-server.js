@@ -7,7 +7,6 @@ require('./handlers/dataConnector.js').connect();
 
 //get our data model
 const Movie = require('./models/Movie');
-
 const Brief = require('./models/Brief');
 
 
@@ -18,7 +17,7 @@ const app = express();
 
 //tell node to use json and HTTP header features in body-parser
 app.use(parser.json());
-app.use(parser.urlencoded({extended: true}));
+app.use(parser.urlencoded({ extended: true }));
 
 //use the routeHandlers
 const movieRouter = require('./handlers/movieRouter.js');
