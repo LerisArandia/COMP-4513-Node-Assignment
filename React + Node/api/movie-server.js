@@ -4,32 +4,27 @@ const parser = require('body-parser');
 // create connection to database
 require('./handlers/dataConnector.js').connect();
 
-
 //get our data model
 const Movie = require('./models/Movie');
-
 const Brief = require('./models/Brief');
-
-
-
 
 //create an express app
 const app = express();
 
 //tell node to use json and HTTP header features in body-parser
 app.use(parser.json());
-app.use(parser.urlencoded({extended: true}));
+app.use(parser.urlencoded({ extended: true }));
 
-//use the routeHandlers
-const movieRouter = require('./handlers/movieRouter.js');
+// //use the routeHandlers
+// const movieRouter = require('./handlers/movieRouter.js');
 
-movieRouter.handleAllMovies(app, Movie);
-movieRouter.handleSingleMovie(app, Movie);
-movieRouter.handleRatingRequest(app, Movie);
-movieRouter.handleTitleSearch(app, Movie);
-//movieRouter.handleYearRequest(app, Movie);
+// movieRouter.handleAllMovies(app, Movie);
+// movieRouter.handleSingleMovie(app, Movie);
+// movieRouter.handleRatingRequest(app, Movie);
+// movieRouter.handleTitleSearch(app, Movie);
+// //movieRouter.handleYearRequest(app, Movie);
 
-movieRouter.handleMovieBrief(app, Brief);
+// movieRouter.handleMovieBrief(app, Brief);
 
 
 

@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
 
-// define a schema that maps to the structure of the data in MongoDB
-const moviesSchema = new mongoose.Schema({
+const movieSchema = new mongoose.Schema({
     id: Number,
     tmdb_id: Number,
     imdb_id: String,
-    release_date: Date,
+    release_date: String,
     title: String,
     runtime: Number,
     revenue: Number,
@@ -16,9 +15,56 @@ const moviesSchema = new mongoose.Schema({
         average: Number,
         count: Number
     },
-    overview: String
+    details: {
+        overview: String,
+        genres: [
+            {
+                id: Number,
+                name: String
+            }
+        ],
+        keywords: [
+            {
+                id: Number,
+                name: String
+            }
+        ]
+    },
+    production: {
+        crew: [
+            {
+                credit_id: String,
+                department: String,
+                gender: Number,
+                id: Number,
+                job: String,
+                name: String
+            }
+        ],
+        cast: [
+            {
+                cast_id: Number,
+                character: String,
+                credit_id: String,
+                gender: Number,
+                id: Number,
+                name: String,
+                order: Number
+            }
+        ],
+        companies: [
+            {
+                name: String,
+                id: Number
+            }
+        ],
+        countries: [
+            {
+                iso_3166_1: String,
+                name: String
+            }
+        ]
+    }
 });
 
-
-
-module.exports = mongoose.model('Movie', moviesSchema);
+module.exports = mongoose.model('Movie', movieSchema, "movies");

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // define a schema that maps to the structure of the data in MongoDB
-const briefsSchema = new mongoose.Schema({
+const briefSchema = new mongoose.Schema({
     id: Number,
     tmdb_id: Number,
     imdb_id: String,
@@ -17,11 +17,8 @@ const briefsSchema = new mongoose.Schema({
         count: Number
     },
     overview: String
-   
-    
-    
 });
 
 
 
-module.exports = mongoose.model('Brief' , briefsSchema);
+module.exports = mongoose.model('Brief', briefSchema, "briefs");

@@ -55,8 +55,8 @@ const openRoutes = require('./handlers/openRouter.js');
 app.use('/', openRoutes);
 
 //these routes only if logged in
-const apiRoutes = require('./handlers/apiRouter.js');
-app.use('/api', apiRoutes);
+const apiRouter = require('./handlers/apiRouter.js');
+app.use('/api', apiRouter);
 
 
 app.use(function (err, req, res, next) {

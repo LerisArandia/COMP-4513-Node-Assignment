@@ -7,6 +7,7 @@ function ensureAuthenticated(req, resp, next) {
     req.flash('info', 'Please log in to view that resource');
     resp.render('login', { message: req.flash('info') });
 }
+
 module.exports = {
     ensureAuthenticated
 };
