@@ -17,11 +17,8 @@ const moviesSchema = new mongoose.Schema({
         count: Number
     },
     overview: String
-   
-    
-    
 });
 
 
 
-module.exports = mongoose.model('Movie' , moviesSchema);
+module.exports = mongoose.model('Movie', moviesSchema);
