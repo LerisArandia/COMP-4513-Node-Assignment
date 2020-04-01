@@ -2,6 +2,7 @@ const express = require('express');
 // const ImageModel = require('./models/Image.js');
 const UserModel = require('../models/User.js');
 const MovieModel = require('../models/Movie.js');
+const BriefModel = require('../models/Brief.js');
 const helper = require('./helpers.js');
 const mongoose = require('mongoose');
 
@@ -34,7 +35,6 @@ router.get('/movies/:id', helper.ensureAuthenticated, (req, resp) => {
       if (err || data.length === 0) {
          resp.json({ message: 'Movie not found' });
       } else {
-         console.log(data);
          resp.json(data);
       }
    });
@@ -42,20 +42,58 @@ router.get('/movies/:id', helper.ensureAuthenticated, (req, resp) => {
 
 //handle request for title substring 
 router.get('/find/title/:title', helper.ensureAuthenticated, (req, resp) => {
-   const title = req.params.title.toLowerCase();
-   MovieModel.find({ 'title': req.params.title }, (err, data) => {
-      if (err) {
-         resp.json({ message: "Movie Not Found" });
+   MovieModel.find({ 'title': new RegExp(req.params.title, 'i') }, (err, data) => {
+      if (err || data.length === 0) {
+         resp.json({ message: "No movie containing " + req.params.title });
       }
       else {
          resp.json(data);
       }
    })
-
-   //        const matches = Movie.filter( (obj) => obj.title.toLowerCase().includes(title)) ;
-   //        
-   //        resp.json(matches);
-
 })
+
+// handle request for rating
+router.get('/find/rating/:r1/:r2', helper.ensureAuthenticated, (req, resp) => {
+   MovieModel.find().where('ratings.average')
+      .gt(req.params.r1)
+      .lt(req.params.r2)
+      .exec(function (err, data) {
+         if (err || data.length === 0) {
+            resp.json({ message: "No movies within " + req.params.r1 + "and " + req.params.r2 });
+         }
+         else {
+            resp.json(data);
+         }
+      })
+})
+
+// handle request for year
+router.get('/find/year/:y1/:y2', helper.ensureAuthenticated, (req, resp) => {
+   MovieModel.find().where('release_date')
+      .gt(req.params.y1)
+      .lt(req.params.y2)
+      .exec((err, data) => {
+         if (err || data.length === 0) {
+            resp.json({ message: "No movies found" });
+         } else {
+            resp.json(data);
+         }
+      });
+})
+
+// handle movie brief
+router.get('/brief', helper.ensureAuthenticated, (req, resp) => {
+   BriefModel.find({}, function (err, data) {
+      if (err || data.length === 0) {
+         resp.json({ message: 'Unable to retrieve brief movies.' });
+      }
+      else {
+         resp.json(data);
+      }
+   })
+})
+
+
+
 
 module.exports = router;
