@@ -1,26 +1,48 @@
 const express = require('express');
-const LoginModel = require('../models/Login.js');
 const MovieModel = require('../models/Movie.js');
 const helper = require('./helpers.js');
-
 const router = express.Router();
 
 //handle all movies
-const handleAllMovies = (app, Movie) => {
-    app.route('/api/movies')
-        .get(function (req, resp) {
-            Movie.find({}, function (err, data) {
-                if (err) {
-                    resp.json({ message: 'Unable to conenct to Movies' });
-                } else {
-                    //return JSON received by Mongo as response
-                    resp.json(data);
-                }
-            });
-        });
-};
+router.get('/api/movies', helper.ensureAuthenticated, (req, resp) => {
+    MovieModel.find({}, function (err, data) {
+        if (err) {
+            resp.json({ message: 'Unable to conntec to Movies' });
+        } else {
+            //return JSON received by Mongo as response
+            resp.json(data);
+        }
+    })
+})
+
+// const handleAllMovies = (app, Movie) => {
+//     app.route('/api/movies')
+//         .get(function (req, resp) {
+//             Movie.find({}, function (err, data) {
+//                 if (err) {
+//                     resp.json({ message: 'Unable to conenct to Movies' });
+//                 } else {
+//                     //return JSON received by Mongo as response
+//                     resp.json(data);
+//                 }
+//             });
+//         });
+// };
 
 //handle request for a single movie with specific id
+router.get('/api/movies/:id', helper.ensureAuthenticated, (req, resp) => {
+    MovieModel.find({ 'id': req.params.id }, function (err, data) {
+        if (err) {
+            resp.json({ message: "Movie Not Found" });
+        }
+        else {
+            resp.json(data);
+        }
+    })
+})
+
+
+
 // const handleSingleMovie = (app, Movie) => {
 //     app.route('/api/movies/:id')
 //         .get(function (req, resp) {
@@ -34,19 +56,6 @@ const handleAllMovies = (app, Movie) => {
 //             })
 //         })
 // }
-
-const handleSingleMovie = (app, Movie) => {
-    app.get(('/api/movies/:id'), helper.ensureAuthenticated, (req, resp) => {
-        Movie.find({ 'id': req.params.id }, function (err, data) {
-            if (err) {
-                resp.json({ message: "Movie Not Found" });
-            }
-            else {
-                resp.json(data);
-            }
-        })
-    })
-}
 
 
 //handle request for title substring 
@@ -122,11 +131,4 @@ const handleMovieBrief = (app, Brief) => {
 }
 
 
-module.exports = {
-    handleAllMovies,
-    handleSingleMovie,
-    handleRatingRequest,
-    handleTitleSearch,
-    handleYearRequest,
-    handleMovieBrief
-};
+module.exports = router;

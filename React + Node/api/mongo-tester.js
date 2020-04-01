@@ -4,7 +4,7 @@ const express = require('express');
 require('dotenv').config();
 
 // create connection to database
-require('../api/handlers/dataConnector.js').connect();
+require('./handlers/dataConnector.js').connect();
 
 // create an express app
 const app = express();
