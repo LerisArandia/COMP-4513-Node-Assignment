@@ -30,9 +30,9 @@ class App extends React.Component {
          this.setState({ loaded: true });
        }
        else {
-//      const url = "https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?id=ALL";
+      const url = "https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?id=ALL";
            
-           const url = "/api/brief";
+      //const url = "/api/brief";
 
       const response = await fetch(url);
       const jsonData = await response.json();
