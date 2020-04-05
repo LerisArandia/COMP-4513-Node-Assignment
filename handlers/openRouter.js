@@ -5,7 +5,7 @@ const helper = require('./helpers.js');
 
 // Welcome Page
 router.get('/', helper.ensureAuthenticated, (req, resp) => {
-   resp.redirect('http://localhost:3000/');
+   resp.redirect('../client/src/App.js');
 });
 
 router.get('/login', (req, resp) => {
