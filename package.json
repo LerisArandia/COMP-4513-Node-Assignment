@@ -10,7 +10,7 @@
     "server": "nodemon index.js",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "start": "node index.js",
-    "heroku-postbuild": "cd client \"npm install\" \"npm run build\"" 
+    "heroku-postbuild": "cd client \"npm install\" \"npm run build\""
   },
   "keywords": [],
   "author": "",
@@ -27,12 +27,8 @@
     "express-flash": "0.0.2",
     "express-session": "^1.17.0",
     "mongoose": "^5.9.7",
-<<<<<<< HEAD
-    "react": "^16.13.1",
-=======
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
->>>>>>> 1229f33137dd6369c19d27e9a5ec66d54f52f34b
     "react-burger-menu": "^2.6.13",
     "react-modal": "^3.11.2",
     "react-router-dom": "^5.1.2",
