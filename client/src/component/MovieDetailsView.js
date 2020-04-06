@@ -6,6 +6,8 @@ import Favorites from './Favorites.js';
 import CastView from './CastView.js';
 import "../css/MovieDetails.css";
 
+import { Layout } from 'antd';
+
 class MovieDetailsView extends React.Component {
 
     constructor(props) {
@@ -76,7 +78,6 @@ class MovieDetailsView extends React.Component {
     }
 
     render() {
-
         let component = "";
         if (!this.state.showCast) {
             component = <MovieDetails movieData={this.state.movieData} addFav={this.addToFav} />;
@@ -85,8 +86,7 @@ class MovieDetailsView extends React.Component {
 
         if (this.state.loaded) {
             return (
-                <section className='main'>
-                    <div>
+                <Layout className="layout">
                         <HeaderApp />
                         <Favorites favs={this.state.favs} delete={this.deleteFav} />
                         <div id="movie-details">
@@ -95,17 +95,16 @@ class MovieDetailsView extends React.Component {
                             {component}
                             <DetailTabs movieData={this.state.movieData} toggle={this.castViewOn} />
                         </div>
-                    </div>
-                </section>
+                </Layout>
             );
         }
         else {
             return (
-                <div>
+                <Layout className="layout">
                     <HeaderApp />
                     <Favorites favs={this.state.favs} delete={this.deleteFav} />
                     <span><i className="fas fa-spinner fa-spin"></i></span>
-                </div>
+                </Layout>
             );
         }
     }
