@@ -3,6 +3,7 @@ const expressLayouts = require('express-ejs-layouts');
 const parser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+// var cors = require('cors');
 /* ----- add new requires here ------- */
 const passport = require('passport');
 const flash = require('express-flash');
@@ -25,6 +26,8 @@ app.set('view engine', 'ejs');
 // serves up static files from the public folder. 
 app.use(express.static('public'));
 app.use('/static', express.static('public'));
+
+// app.use(cors());
 
 // setup express middleware
 app.use(parser.json());
