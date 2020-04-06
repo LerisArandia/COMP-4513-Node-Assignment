@@ -4,6 +4,8 @@ import Header from './HeaderApp.js';
 import FilteredMovieList from './FilteredMovieList.js';
 import Favorites from './Favorites.js';
 
+import { Layout } from 'antd';
+
 class DefaultView extends React.Component {
     constructor(props) {
         super(props);
@@ -129,33 +131,39 @@ class DefaultView extends React.Component {
     }
 
     render() {
+        const { Content } = Layout;
         if (this.props.loaded) {
             if (!this.state.showFiltered) {
                 return (
-                    <section className='main'>
+                    <Layout className="layout">
                         <Header />
-                        <Favorites favs={this.props.favsList} delete={this.deleteFav} />
-                        <MovieList loaded={this.props.loaded} filterRating={this.filterRating} filterYear={this.filterYear} filterTitle={this.filterTitle} favsList={this.props.favsList} movies={this.props.movies} addFav={this.addFav} filterMovie={this.filterMovie} clearFilter={this.clearFilter} />
-                    </section>
+                        <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
+                            <Favorites favs={this.props.favsList} delete={this.deleteFav} />
+                            <MovieList loaded={this.props.loaded} filterRating={this.filterRating} filterYear={this.filterYear} filterTitle={this.filterTitle} favsList={this.props.favsList} movies={this.props.movies} addFav={this.addFav} filterMovie={this.filterMovie} clearFilter={this.clearFilter} />
+                        </Content>
+                    </Layout>
                 );
             }
             else {
                 return (
-                    <section className='main'>
+                    <Layout className="layout">
                         <Header />
-                        <Favorites favs={this.props.favsList} delete={this.deleteFav} />
-                        <FilteredMovieList loaded={this.props.loaded} filterRating={this.filterRating} filterYear={this.filterYear} filterTitle={this.filterTitle} favsList={this.props.favsList} movies={this.state.filteredMovies} addFav={this.addFav} filterMovie={this.filterMovie} clearFilter={this.clearFilter} />
-                    </section >
+                        <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
+                            <Favorites favs={this.props.favsList} delete={this.deleteFav} />
+                            <FilteredMovieList loaded={this.props.loaded} filterRating={this.filterRating} filterYear={this.filterYear} filterTitle={this.filterTitle} favsList={this.props.favsList} movies={this.state.filteredMovies} addFav={this.addFav} filterMovie={this.filterMovie} clearFilter={this.clearFilter} />
+                        </Content>
+                    </Layout>
                 );
             }
         } else {
             return (
-                <div>
+                <Layout className="layout">
                     <Header />
-                    <Favorites favs={this.props.favs} />
-                    <span><i className="fas fa-spinner fa-spin"></i></span>
-
-                </div>
+                    <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
+                        <Favorites favs={this.props.favs} />
+                        <span><i className="fas fa-spinner fa-spin"></i></span>
+                    </Content>
+                </Layout>
             );
 
         }
