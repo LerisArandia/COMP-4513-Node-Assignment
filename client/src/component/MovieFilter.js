@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/MovieFilter.css';
-import { slide as Menu } from 'react-burger-menu';
+import { Drawer, Button, Form, Space, Radio, Input, Row, Col, Typography } from 'antd';
 
 class MovieFilter extends React.Component {
     constructor(props) {
@@ -25,6 +25,21 @@ class MovieFilter extends React.Component {
         this.ratingMin = React.createRef();
         this.ratingMax = React.createRef();
     }
+
+    state = { visible: false };
+
+    showDrawer = () => {
+        this.setState({
+            visible: true,
+        });
+    };
+
+    onClose = () => {
+        this.setState({
+            visible: false,
+        });
+    };
+
 
     filterRating = () => { this.props.filterRating(this.props.movieList); }
     filterYear = () => { this.props.filterYear(this.props.movieList); }
@@ -71,79 +86,91 @@ class MovieFilter extends React.Component {
     }
 
     render() {
+        const { Title } = Typography;
         return (
-            <Menu >
-                <h1>Movie Filter</h1>
+            <div>
+                <Button onClick={this.showDrawer} id="filterBtn">Filters</Button>
+                <Drawer
+                    title="Movie Filter"
+                    placement="left"
+                    closable={false}
+                    onClose={this.onClose}
+                    visible={this.state.visible}
+                    width="medium"
+                    closable
+                >
+                    <Space>
+                        <Button onClick={this.filterTitle}>By Title</Button>
+                        <Button onClick={this.filterYear}>By Year</Button>
+                        <Button onClick={this.filterRating}>By Rating</Button>
+                    </Space>
 
-                <form onSubmit={this.handleSubmit}>
+                    <Form onSubmit={this.handleSubmit} id="filterForm">
+                        <Form.Item>
+                            <Title level={4}>Title</Title>
+                            <Input name="title" ref={this.title} />
+                        </Form.Item>
 
-                    <div className="filterTitle">
-                        <h4 onClick={this.filterTitle}>Title</h4>
-                        <input type="text" name="title" ref={this.title} />
-                    </div>
-
-                    <div className="filterYear">
-                        <h4 onClick={this.filterYear}>Year</h4>
-                        <div className="yearBox">
+                        <Form.Item className="filterYear">
+                            <Title level={4}>Year</Title>
                             <div>
-                                <input type="radio" name="yearBefore" checked={this.state.yearRadio === "yearBefore"} onChange={this.consoleYear} ref={this.yearBeforeRadio} />
-                                <label>Before</label>
-                                <input type="text" name="beforeNum" ref={this.yearBefore} />
-                            </div>
+                                <div>
+                                    <Row gutter={[8, 8]}>
+                                        <Col span={8}><Radio name="yearBefore" checked={this.state.yearRadio === "yearBefore"} onChange={this.consoleYear} ref={this.yearBeforeRadio}>Before</Radio></Col>
+                                        <Col span={8}><Input name="beforeNum" ref={this.yearBefore} /></Col>
+                                    </Row>
+                                </div>
+                                <div>
+                                    <Row gutter={[8, 8]}>
+                                        <Col span={8}><Radio name="yearAfter" checked={this.state.yearRadio === "yearAfter"} onChange={this.consoleYear} ref={this.yearAfterRadio}>After</Radio></Col>
+                                        <Col span={8}><Input name="afterNum" ref={this.yearAfter} /></Col>
+                                    </Row>
+                                </div>
 
+                                <div>
+                                    <Row gutter={[8, 8]}>
+                                        <Col span={8}><Radio name="yearBetween" checked={this.state.yearRadio === "yearBetween"} onChange={this.consoleYear} ref={this.yearBetweenRadio}>Between</Radio></Col>
+                                        <Col span={8}><Input name="beforeNum" ref={this.yearMin} /></Col>
+                                        <Col span={8}><Input name="beforeNum" ref={this.yearMax} /></Col>
+                                    </Row>
+                                </div>
+                            </div>
+                        </Form.Item>
+
+                        <Form.Item className="filterRating">
+
+                            <Title level={4}>Rating</Title>
                             <div>
-                                <input type="radio" name="yearAfter" checked={this.state.yearRadio === "yearAfter"} onChange={this.consoleYear} ref={this.yearAfterRadio} />
-                                <label>After</label>
-                                <input type="text" name="afterNum" ref={this.yearAfter} />
+                                <div>
+                                    <Row gutter={[8, 8]}>
+                                        <Col span={8}><Radio name="ratingBelow" checked={this.state.ratingRadio === "ratingBelow"} onChange={this.consoleRating} ref={this.ratingBelowRadio}>Below</Radio></Col>
+                                        <Col span={8}><Input name="ratingBelow" ref={this.ratingBelow} /></Col>
+                                    </Row>
+                                </div>
+                                <div>
+                                    <Row gutter={[8, 8]}>
+                                        <Col span={8}><Radio name="ratingAbove" checked={this.state.ratingRadio === "ratingAbove"} onChange={this.consoleRating} ref={this.ratingAboveRadio}>Above</Radio></Col>
+                                        <Col span={8}><Input name="ratingAbove" ref={this.ratingAbove} /></Col>
+                                    </Row>
+                                </div>
+                                <div>
+                                    <Row gutter={[8, 8]}>
+                                        <Col span={8}><Radio name="ratingBetween" checked={this.state.ratingRadio === "ratingBetween"} onChange={this.consoleRating} ref={this.ratingBetweenRadio}>Between</Radio></Col>
+                                        <Col span={8}><Input name="minRating" ref={this.ratingMin} /></Col>
+                                        <Col span={8}><Input name="maxRating" ref={this.ratingMax} /></Col>
+                                    </Row>
+                                </div>
                             </div>
+                        </Form.Item>
 
-                            <div>
-                                <input type="radio" name="yearBetween" checked={this.state.yearRadio === "yearBetween"} onChange={this.consoleYear} ref={this.yearBetweenRadio} />
-                                <label>Between</label>
-                                <input type="text" name="beforeNum" ref={this.yearMin} />
-                                <input type="text" name="beforeNum" ref={this.yearMax} />
-                            </div>
+                        <Space>
+                            <Button type="primary">Filter</Button>
+                            <Button type="primary" onClick={this.props.clearFilter}>Clear</Button>
+                        </Space>
+                    </Form>
 
-                        </div>
-                    </div>
-
-                    <div className="filterRating">
-
-                        <h4 onClick={this.filterRating}>Rating</h4>
-                        <div className="ratingBox">
-                            <div>
-                                <input type="radio" name="ratingBelow" checked={this.state.ratingRadio === "ratingBelow"} onChange={this.consoleRating} ref={this.ratingBelowRadio} />
-                                <label>Below</label>
-                                <input type="text" name="ratingBelow" ref={this.ratingBelow}></input>
-                            </div>
-
-                            <div>
-                                <input type="radio" name="ratingAbove" checked={this.state.ratingRadio === "ratingAbove"} onChange={this.consoleRating} ref={this.ratingAboveRadio} />
-                                <label>Above</label>
-                                {/* <input type="text" name="ratingAbove" ref={this.ratingAbove} /> */}
-                                <input type="text" name="ratingAbove" ref={this.ratingAbove}></input>
-                            </div>
-
-                            <div>
-                                <input type="radio" name="ratingBetween" checked={this.state.ratingRadio === "ratingBetween"} onChange={this.consoleRating} ref={this.ratingBetweenRadio} />
-                                <label>Between</label>
-                                <input type="text" name="minRating" ref={this.ratingMin} />
-                                <input type="text" name="maxRating" ref={this.ratingMax} />
-                            </div>
-
-
-                        </div>
-                    </div>
-
-                    <div className="filterBox">
-                        <button className="filterBtn">Filter</button>
-                        <button className="filterBtn" onClick={this.props.clearFilter}>Clear</button>
-                    </div>
-
-                </form>
-            </Menu>
-
-
+                </Drawer>
+            </div>
         );
     }
 

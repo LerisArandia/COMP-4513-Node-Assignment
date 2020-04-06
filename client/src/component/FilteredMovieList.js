@@ -3,6 +3,7 @@ import MovieThumb from './MovieThumb.js';
 import MovieFilter from './MovieFilter.js';
 import FilteredMovieThumb from './FilteredMovieThumb.js';
 import '../css/MovieList.css';
+import { Typography } from 'antd';
 
 class FilteredMovieList extends React.Component {
     constructor(props) {
@@ -11,6 +12,8 @@ class FilteredMovieList extends React.Component {
     }
 
     render() {
+        const { Title } = Typography;
+
         let display = "";
         if (this.props.movies.length > 0) {
             display = this.props.movies.map((m, index) =>
@@ -24,21 +27,17 @@ class FilteredMovieList extends React.Component {
 
         return (
             <article className="FiltersWithMovie">
-
                 <div className="movieFilter" id="page-wrap">
                     <MovieFilter clearFilter={this.props.clearFilter} filterYear={this.props.filterYear} filterTitle={this.props.filterTitle} filterRating={this.props.filterRating} filterMovie={this.props.filterMovie} />
                 </div>
 
                 <div className="MovieList">
-                    <h1 className="movieTitle"> Movies </h1>
+                <Title id="movieTitle"> Movies </Title>
                     <div className="listBox">
                         {display}
                     </div>
-
                 </div>
-
             </article>
-
         );
     }
 }
