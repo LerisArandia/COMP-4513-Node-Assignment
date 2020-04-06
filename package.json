@@ -33,6 +33,7 @@
     "mongoose": "^5.9.7",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "react-app": "^1.1.2",
     "react-app-rewired": "^2.1.5",
     "react-burger-menu": "^2.6.13",
     "react-modal": "^3.11.2",
