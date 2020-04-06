@@ -1,9 +1,18 @@
-#filterBtn{
-    margin: 1em;
+.filterTitle, .filterYear , .filterBox , .filterRating
+{
+    margin: 20px;
 }
 
-#filterForm{
-    margin-top: 1em;
+
+input[type=text]{
+    width: 80%;
+    border-radius: 0.4em;
+    border: solid 1px var(--light-box-elements);
+    box-shadow: 0.3em 0.3em 0.3em var(--light-blue);
+}
+
+input:hover, input:focus{
+    background-color: var(--blue-focus);
 }
 
 .filterTitle input
@@ -11,6 +20,12 @@
     width: 80%;
     /* margin: 10px; */
     height: 30px;
+}
+
+.filterBtn{
+    width: 40%;
+    padding: 0.5em;
+    border-radius: 20px;
 }
 
 .yearBox div, .ratingBox div{
@@ -23,4 +38,9 @@
 
 .yearBox div *, .ratingBox div *{
     margin: 0.3em;
+}
+
+.filterTitle h4:hover, .filterYear h4:hover, .filterRating h4:hover{
+color: var(--orange-focus);
+cursor: pointer;
 }

@@ -2,14 +2,41 @@
   text-align: center;
 }
 
-.ant-layout-header, .ant-layout-content, .site-layout {
-  padding: 0 !important;
+.header{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  background-color: var(--blue-focus);
+}
+
+.header-logo {
+  grid-column: 1/span 1;
+}
+
+.aboutBtn {
+  grid-column: 2/span 1;
+}
+.aboutBtn button{
+  float: right;
+  background-color: white;
+  border: 1px solid var(--orange-focus);
+  border-radius: 5px;
+  color: black;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  margin: 1.5rem 0.5rem;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.aboutBtn button:hover{
+  background-color: var(--orange-focus);
+  color: white;
 }
 
 .App-logo {
-  height: 3rem;
+  height: 3.5rem;
+  margin: 0.5rem;
   pointer-events: pointer;
-  display: inline;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -25,6 +52,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.main {
+  position: absolute;
+  left: 0;
+  right: 0;
 }
 
 /* Used this Tutorial https://www.youtube.com/watch?v=NUQkajBdnmQ , https://github.com/Ihatetomatoes/react-router-page-transition-css */

@@ -2,11 +2,10 @@ import React from 'react';
 import MovieThumb from './MovieThumb.js';
 import MovieFilter from './MovieFilter.js';
 import '../css/MovieList.css';
-import { Typography } from 'antd';
+
 
 class MovieList extends React.Component {
     render() {
-        const { Title } = Typography;
 
         if (this.props.loaded) {
             return (
@@ -14,8 +13,9 @@ class MovieList extends React.Component {
                     <div className="movieFilter" id="page-wrap">
                         <MovieFilter filterYear={this.props.filterYear} filterRating={this.props.filterRating} filterTitle={this.props.filterTitle} movieList={this.props.movies} filterMovie={this.props.filterMovie} clearFilter={this.props.clearFilter} />
                     </div>
+
                     <div className="MovieList">
-                        <Title id="movieTitle"> Movies </Title>
+                        <h1 className="movieTitle"> Movies </h1>
 
                         <div className="listBox">
                             {this.props.movies.map((m, index) =>

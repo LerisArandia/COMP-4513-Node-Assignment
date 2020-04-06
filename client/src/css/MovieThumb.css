@@ -1,8 +1,27 @@
-.ant-card-cover img{
-    width: 100%;
+.movies h3, .movies p, .movies button
+{
+    text-align: center;
 }
 
-.ant-card-body{
+.movies button
+{
+    /* background-color: skyblue; */
+    border-radius: 10px;
     text-align: center;
-    padding: 0.5em;
+    padding: 5px;
+}
+
+.movies
+{
+    margin: 10px;
+    background-color:white;
+    box-shadow: 0.5em 0.5em 0.7em var(--blue-focus);
+    border-radius: 1em;
+    font-size:0.7em;
+    height: fit-content;
+    /* padding: 0.3em; */
+}
+
+.movies figure {
+    text-align: center;
 }

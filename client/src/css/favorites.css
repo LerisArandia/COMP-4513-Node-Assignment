@@ -1,6 +1,54 @@
+.favorites{
+    background-color: var(--light-box-background);
+    height: auto;
+    margin: 0;
+}
+
+.collapsible-content {
+    padding: 0 18px;
+    /* display: block; */
+    overflow: auto;
+}
+
+.collapsible{
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+
+
 #favList{
     display: flex;
     flex-flow: row wrap;
     padding: 0.1em 0.7em;
     align-content: center;
+}
+
+.favorites h2{
+    margin: 0;
+}
+
+#favImg a img{
+    margin: 0;
+}
+
+#favDelete{
+    color: red;
+    text-align: center;
+    margin: 0 1em;
+    padding: 0;
+    background-color: none;
+    border: none;
+}
+
+#favDelete:hover{
+    background-color: white;
+    border-radius: 1em;
+    cursor: pointer; 
+}
+
+@media only screen and (max-width: 800px){
+    .favorites{
+        width: 100%;
+    }
 }

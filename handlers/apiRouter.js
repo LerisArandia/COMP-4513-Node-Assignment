@@ -5,7 +5,10 @@ const MovieModel = require('../models/Movie.js');
 const BriefModel = require('../models/Brief.js');
 const helper = require('./helpers.js');
 const mongoose = require('mongoose');
+<<<<<<< HEAD
 const _ = require('lodash');
+=======
+>>>>>>> 716ab5df56f652b089beea63220cc8611bb5006b
 
 const router = express.Router();
 
@@ -94,6 +97,7 @@ router.get('/brief', helper.ensureAuthenticated, (req, resp) => {
    })
 })
 
+<<<<<<< HEAD
 // get user favorites
 router.get('/favorites/:id', helper.ensureAuthenticated, (req, resp) => {
    UserModel.find({ id: req.params.id }, (err, data) => {
@@ -132,6 +136,8 @@ router.delete('/favorites/:id'), helper.ensureAuthenticated, (req, resp) => {
    });
 }
 
+=======
+>>>>>>> 716ab5df56f652b089beea63220cc8611bb5006b
 
 
 

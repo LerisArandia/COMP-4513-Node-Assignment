@@ -7,9 +7,29 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a{
+  text-decoration-line: none;
+}
+
+a:hover{
+  cursor: pointer;
+}
+
+button{
+  background-color: var(--light-orange-focus);  
+  border: solid 1px var(--orange-focus);
+  margin: 1em;
+}
+
+button:hover{
+  background-color: white;
+  cursor: pointer;
 }
 
 .Overlay{
@@ -20,6 +40,14 @@ code {
     bottom: 0;
   background-color: var(--dark-box-background);
 }
+/* 
+.bm-item {
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 10px;
+  color: #d1d1d1;
+  transition: color 0.2s;
+} */
 
 .bm-item:hover {
   color: white;

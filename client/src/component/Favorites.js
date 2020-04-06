@@ -4,8 +4,6 @@ import FavoriteItem from './FavoriteItem.js';
 // import { findByLabelText } from '@testing-library/react';
 import '../css/favorites.css';
 
-import { Collapse } from 'antd';
-
 class Favorites extends React.Component {
 
     constructor(props) {
@@ -27,17 +25,19 @@ class Favorites extends React.Component {
             icon = <i className="fas fa-chevron-up"></i>;
         }
 
-        const { Panel } = Collapse;
-
         return (
-            
-            <Collapse >
-                <Panel header="Favorites" key="1">
-                    <div id="favList">
+            <div className="favorites" >
+                <div style={{ position: 'relative' }}>
+
+                    <h2 style={{ padding: '0.5em' }}>Favorites</h2>
+                    <div className='collapsible' onClick={this.toggleContent}>
+                        {icon}
+                    </div>
+                    <div id="favList" className='collapsible-content'>
                         {content}
                     </div >
-                </Panel>
-            </Collapse>
+                </div>
+            </div>
         )
     }
 }

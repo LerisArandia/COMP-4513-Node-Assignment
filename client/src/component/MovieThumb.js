@@ -1,8 +1,8 @@
 import React from "react";
 import '../css/MovieThumb.css';
+import MovieDetailsView from './MovieDetailsView.js';
+import { Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { Card, Button, Space } from 'antd';
-import { HeartTwoTone, EyeOutlined } from '@ant-design/icons';
 
 class MovieThumb extends React.Component {
 
@@ -12,18 +12,19 @@ class MovieThumb extends React.Component {
 
     render() {
         const imgURL = `https://image.tmdb.org/t/p/w92/${this.props.movie.poster}`;
+        const link = `/moviedetails/${this.props.id}`;
+
         return (
-            <Card
-                hoverable
-                style={{ width: 200 }}
-                id="cardList"
-                cover={
+
+            <div className="movies">
+
+                <figure>
                     <Link to={{
                         pathname: '/moviedetails',
                         state: { id: this.props.id, favsList: this.props.favsList }
                     }}><img src={imgURL} /></Link>
+                </figure>
 
-                }>
                 <Link to={{
 
                     pathname: '/moviedetails',
@@ -35,16 +36,18 @@ class MovieThumb extends React.Component {
 
                 <p>{this.props.year}</p>
                 <p>{this.props.rating}</p>
-                <Space size={30}>
-                    <Button onClick={this.add} shape="circle" size="large" icon={<HeartTwoTone twoToneColor="#eb2f96" />}/>
+                <p>
+                    <button onClick={this.add}>❤</button>
                     <Link to={{
                         pathname: '/moviedetails',
                         state: { id: this.props.id, favsList: this.props.favsList }
                     }}>
-                        <Button shape="circle" size="large" icon={<EyeOutlined />}/>
+                        <button>View</button>
                     </Link>
-                </Space>
-            </Card>
+
+                </p>
+            </div>
+
         );
     }
 

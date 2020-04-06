@@ -3,17 +3,29 @@ import DefaultView from './component/DefaultView.js';
 import './App.css';
 import Home from "./component/Home.js";
 import MovieDetailsView from "./component/MovieDetailsView.js";
+<<<<<<< HEAD
 import { Route, Switch } from 'react-router-dom';
 import Profile from "./component/Profile.js";
 // import CastView from "./component/CastView.js";
 import {
   CSSTransition,
   TransitionGroup,
+=======
+import {
+    Route,
+    Switch
+} from 'react-router-dom';
+// import CastView from "./component/CastView.js";
+import {
+    CSSTransition,
+    TransitionGroup,
+>>>>>>> 716ab5df56f652b089beea63220cc8611bb5006b
 } from 'react-transition-group'; // Used this Tutorial https://www.youtube.com/watch?v=NUQkajBdnmQ , https://github.com/Ihatetomatoes/react-router-page-transition-css
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
 class App extends React.Component {
+<<<<<<< HEAD
   constructor(props) {
     super(props);
     this.state = { movies: [] };
@@ -77,6 +89,77 @@ class App extends React.Component {
   }
 
   render() {
+=======
+    constructor(props) {
+        super(props);
+        this.state = {
+            movies: []
+        };
+        this.state.favorites = [];
+        this.state.loaded = false;
+    }
+
+
+    async componentDidMount() {
+        try {
+
+            //const url = "https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?id=ALL";
+
+            const url = "/api/movies";
+            
+            const response = await fetch(url);
+            const jsonData = await response.json();
+
+            this.setState({
+                movies: jsonData,
+                loaded: true
+            });
+
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+
+
+
+
+    addToFavorite = (poster) => {
+        let value = false;
+        console.log(poster);
+        for (let c of this.state.favorites) {
+            if (c.poster === poster.poster) {
+                value = true;
+            }
+        }
+
+        if (value === false) {
+            const data = this.state.favorites;
+            data.push(poster);
+            this.setState({
+                favorites: data
+            });
+        }
+    }
+
+    deleteFromFavorite = (poster) => {
+        console.log("To be delated: " + poster);
+        const fav = this.state.favorites;
+        for (let c = 0; c < fav.length; c++) {
+            if (fav[c].poster === poster.poster) {
+                fav.splice(c, 1);
+            }
+        }
+
+        this.setState({
+            favorites: fav
+        });
+
+    }
+
+   render() {
+>>>>>>> 716ab5df56f652b089beea63220cc8611bb5006b
     if (this.state.loaded) {
       return (
         <main>
@@ -89,7 +172,11 @@ class App extends React.Component {
                 classNames="fade"
               >
                 <Switch location={location}>
+<<<<<<< HEAD
                   <Route path="/home" exact component={Home} />
+=======
+                  <Route path="/" exact component={Home} />
+>>>>>>> 716ab5df56f652b089beea63220cc8611bb5006b
                   <Route path="/default" exact render={() =>
                     <DefaultView loaded={this.state.loaded} movies={this.state.movies} favsList={this.state.favorites} addsFav={this.addToFavorite} deletesFav={this.deleteFromFavorite} />
                   } />
@@ -97,7 +184,10 @@ class App extends React.Component {
               </CSSTransition>
             </TransitionGroup>
           )} />
+<<<<<<< HEAD
           <Route path="/profile" exact component={Profile} />
+=======
+>>>>>>> 716ab5df56f652b089beea63220cc8611bb5006b
           <Route path="/moviedetails" exact component={MovieDetailsView} />
           {/* <Route path="/castview" exact component={CastView} /> */}
           {/* <DefaultView movies={this.state.movies} addsFav={this.addToFavorite} /> */}
