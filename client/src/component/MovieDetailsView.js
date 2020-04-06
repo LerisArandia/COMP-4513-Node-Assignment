@@ -6,11 +6,8 @@ import Favorites from './Favorites.js';
 import CastView from './CastView.js';
 import "../css/MovieDetails.css";
 
-<<<<<<< HEAD
 import { Layout } from 'antd';
 
-=======
->>>>>>> 716ab5df56f652b089beea63220cc8611bb5006b
 class MovieDetailsView extends React.Component {
 
     constructor(props) {
@@ -29,21 +26,10 @@ class MovieDetailsView extends React.Component {
     async componentDidMount() {
         try {
             const url = `https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies.php?id=${this.props.location.state.id}`;
-<<<<<<< HEAD
-=======
-//            console.log(`${this.props.location.state.id}`);
-//            const url = `/api/movies/${this.props.location.state.id}`;
             
->>>>>>> 716ab5df56f652b089beea63220cc8611bb5006b
-
             const response = await fetch(url);
             const jsonData = await response.json();
 
-<<<<<<< HEAD
-=======
-            
-            console.log(jsonData)
->>>>>>> 716ab5df56f652b089beea63220cc8611bb5006b
             this.setState({ movieData: jsonData, loaded: true });
 
         } catch (error) {
@@ -92,10 +78,6 @@ class MovieDetailsView extends React.Component {
     }
 
     render() {
-<<<<<<< HEAD
-=======
-
->>>>>>> 716ab5df56f652b089beea63220cc8611bb5006b
         let component = "";
         if (!this.state.showCast) {
             component = <MovieDetails movieData={this.state.movieData} addFav={this.addToFav} />;
@@ -104,12 +86,7 @@ class MovieDetailsView extends React.Component {
 
         if (this.state.loaded) {
             return (
-<<<<<<< HEAD
                 <Layout className="layout">
-=======
-                <section className='main'>
-                    <div>
->>>>>>> 716ab5df56f652b089beea63220cc8611bb5006b
                         <HeaderApp />
                         <Favorites favs={this.state.favs} delete={this.deleteFav} />
                         <div id="movie-details">
@@ -118,29 +95,16 @@ class MovieDetailsView extends React.Component {
                             {component}
                             <DetailTabs movieData={this.state.movieData} toggle={this.castViewOn} />
                         </div>
-<<<<<<< HEAD
                 </Layout>
-=======
-                    </div>
-                </section>
->>>>>>> 716ab5df56f652b089beea63220cc8611bb5006b
             );
         }
         else {
             return (
-<<<<<<< HEAD
                 <Layout className="layout">
                     <HeaderApp />
                     <Favorites favs={this.state.favs} delete={this.deleteFav} />
                     <span><i className="fas fa-spinner fa-spin"></i></span>
                 </Layout>
-=======
-                <div>
-                    <HeaderApp />
-                    <Favorites favs={this.state.favs} delete={this.deleteFav} />
-                    <span><i className="fas fa-spinner fa-spin"></i></span>
-                </div>
->>>>>>> 716ab5df56f652b089beea63220cc8611bb5006b
             );
         }
     }
