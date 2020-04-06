@@ -41,7 +41,10 @@ class MovieFilter extends React.Component {
 
         if (this.title.current.value !== "") {
             titleValue = `${this.title.current.value}`;
-            console.log("has title");
+            
+            
+            console.log("has title -----> " +  titleValue);
+            
         }
 
         if (this.state.yearRadio === "yearBefore") {

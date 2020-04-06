@@ -24,10 +24,15 @@ class MovieDetailsView extends React.Component {
     async componentDidMount() {
         try {
             const url = `https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies.php?id=${this.props.location.state.id}`;
+//            console.log(`${this.props.location.state.id}`);
+//            const url = `/api/movies/${this.props.location.state.id}`;
+            
 
             const response = await fetch(url);
             const jsonData = await response.json();
 
+            
+            console.log(jsonData)
             this.setState({ movieData: jsonData, loaded: true });
 
         } catch (error) {

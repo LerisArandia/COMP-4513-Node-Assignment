@@ -8,7 +8,12 @@ class DefaultView extends React.Component {
     constructor(props) {
         super(props);
         this.state = { movies: this.filterTitle(this.props.movies), loaded: false };
-        this.state = { title: "", yearBefore: "", ratingBefore: "" };
+//        this.state = { title: "", yearBefore: "", ratingBefore: "" };
+        this.state.title = '';
+        this.state.minYear = '';
+        this.state.maxYear = '';
+        this.state.minRating = '';
+        this.state.maxRating = '';
         this.state.filteredMovies = {};
         this.state.showFiltered = false;
         this.state.homeSearch = '';
@@ -25,71 +30,93 @@ class DefaultView extends React.Component {
 
     filterMovie = (title, minYear, maxYear, minRating, maxRating) => {
 
-        let initialList = this.props.movies;
-        let sortedTitle = [];
-        let sortedRating = [];
-        let sortedYear = [];
+        if(title)
+            {
+                console.log("******   " + title);
+        
+        
+                this.setState({title: title},  function() {console.log(this.state.title)});
+        
+                const url = `/api/find/title/${title}`;
+//                const url = `/api/movies/2`;
+//        const url = "https://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?id=ALL";
+                console.log("IN mount");
+                
+            fetch(url)
+                .then(function(response){
+                return response.json();
+            })
+            .then( data => {
+                let sortedMovies = data.sort((a,b) => {
+                    return a.title < b.title ? -1 : 1;
+                })
+                
+                this.setState({ filteredMovies: sortedMovies, showFiltered: true });
+        })
+            };
+        
+        if(minYear || maxYear)
+            {
+                console.log(minYear);
+        
+                this.setState({minYear: minYear , maxYear: maxYear});
+                const url = `api/find/year/${minYear}/${maxYear}`;
+                
+            fetch(url)
+                .then(function(response){
+                return response.json();
+                })
+                .then( data => {
+                 
+                data.sort((a,b) => {
+                    var x = a.release_date.substring(0,4);
+                    var y = b.release_date.substring(0,4);
+                    if(x < y) {return -1;}
+                    if( x > y) {return 1;}
+                    return 0;
+                })
 
-
-        this.setState({ movies: initialList })
-        if (title) {
-            sortedTitle = initialList.filter((movie) => {
-                if ((movie.title.toLowerCase()).includes(title.toLowerCase())) {
-                    return movie;
-                }
+                    console.log(data);
+                    this.setState({ filteredMovies: data, showFiltered: true });
+                })
             }
-            )
-        } else { sortedTitle = initialList }
+        
+        if(minRating || maxRating)
+            {
+                
+                console.log(minYear);
+        
+                this.setState({minRating: minRating , maxRating: maxRating});
+                const url = `api/find/rating/${minRating}/${maxRating}`;
+                
+            fetch(url)
+                .then(function(response){
+                return response.json();
+                })
+                .then( data => {
+                 
+                data.sort((a,b) => {
+                    var x = a.rating;
+                    var y = b.rating;
+                    if(x < y) {return -1;}
+                    if( x > y) {return 1;}
+                    return 0;
+                })
 
-        if (minRating && maxRating) {
-            sortedRating = sortedTitle.filter((movie) => {
-                if (minRating <= movie.ratings.average && movie.ratings.average <= maxRating) {
-                    return movie;
-                }
-            })
-        }
-        else if (minRating) {
-            sortedRating = sortedTitle.filter((movie) => {
-                if (minRating <= movie.ratings.average) {
-                    return movie;
-                }
-            })
-        }
-        else if (maxRating) {
-            sortedRating = sortedTitle.filter((movie) => {
-                if (movie.ratings.average <= maxRating) {
-                    return movie;
-                }
-            })
-        }
-        if (sortedRating.length == 0) { sortedRating = sortedTitle }
+                    console.log(data);
+                    this.setState({ filteredMovies: data, showFiltered: true });
+                })
+            }
 
-        if (minYear && maxYear) {
-            sortedYear = sortedRating.filter((movie) => {
-                if (minYear <= movie.release_date.substring(0, 4) && movie.release_date.substring(0, 4) <= maxYear) {
-                    return movie;
-                }
-            })
-        }
-        else if (minYear) {
-            sortedYear = sortedRating.filter((movie) => {
-                if (minYear <= movie.release_date.substring(0, 4)) {
-                    return movie;
-                }
-            })
-        }
-        else if (maxYear) {
-            sortedYear = sortedRating.filter((movie) => {
-                if (movie.release_date.substring(0, 4) <= maxYear) {
-                    return movie;
-                }
-            })
-        }
-        if (sortedYear.length == 0) { sortedYear = sortedRating }
-        this.setState({ filteredMovies: sortedYear });
-        this.setState({ showFiltered: true });
+        
+    }   
+    
+    
+    
 
-    }
+    
+
+
 
     clearFilter = () => {
         this.setState({ filteredMovies: {}, showFiltered: false });

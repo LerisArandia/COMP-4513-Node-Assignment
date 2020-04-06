@@ -18,29 +18,30 @@ class MovieDetails extends React.Component {
         console.log(this.props.movieData.id);
         const imgUrl = `https://image.tmdb.org/t/p/w185/${this.props.movieData.poster}`;
         let companies, countries, keywords, genres = "";
-        if (this.props.movieData.production.companies) {
-            companies = this.props.movieData.production.companies.map((company, key) => {
-                return <div key={key} id="company">{company.name}</div>;
-            })
-        } else { companies = <div>No company information available!</div>; }
-
-        if (this.props.movieData.production.countries) {
-            countries = this.props.movieData.production.countries.map((country, key) => {
-                return <div key={key} id="country">{country.name}</div>;
-            })
-        } else { countries = <div>No country information available!</div>; }
-
-        if (this.props.movieData.details.keywords) {
-            keywords = this.props.movieData.details.keywords.map((keyword, key) => {
-                return < div key={key} id="keyword">#{keyword.name}</ div>;
-            })
-        } else { keywords = <div>No keywords available!</div> }
-
-        if (this.props.movieData.details.genres) {
-            genres = this.props.movieData.details.genres.map((genre, key) => {
-                return <div key={key} id="genre">{genre.name}</div>;
-            })
-        } else { genres = <div>No genre information available!</div> }
+        
+//        if (this.props.movieData.production.companies) {
+//            companies = this.props.movieData.production.companies.map((company, key) => {
+//                return <div key={key} id="company">{company.name}</div>;
+//            })
+//        } else { companies = <div>No company information available!</div>; }
+//
+//        if (this.props.movieData.production.countries) {
+//            countries = this.props.movieData.production.countries.map((country, key) => {
+//                return <div key={key} id="country">{country.name}</div>;
+//            })
+//        } else { countries = <div>No country information available!</div>; }
+//
+//        if (this.props.movieData.details.keywords) {
+//            keywords = this.props.movieData.details.keywords.map((keyword, key) => {
+//                return < div key={key} id="keyword">#{keyword.name}</ div>;
+//            })
+//        } else { keywords = <div>No keywords available!</div> }
+//
+//        if (this.props.movieData.details.genres) {
+//            genres = this.props.movieData.details.genres.map((genre, key) => {
+//                return <div key={key} id="genre">{genre.name}</div>;
+//            })
+//        } else { genres = <div>No genre information available!</div> }
 
         return (
             <div id="movie-details">

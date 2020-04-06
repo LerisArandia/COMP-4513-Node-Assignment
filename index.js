@@ -3,7 +3,7 @@ const expressLayouts = require('express-ejs-layouts');
 const parser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-var cors = require('cors');
+//var cors = require('cors');
 /* ----- add new requires here ------- */
 const passport = require('passport');
 const flash = require('express-flash');
@@ -28,7 +28,7 @@ app.use(express.static('public'));
 app.use('/static', express.static('public'));
 
 
-app.use(cors());
+//app.use(cors());
 
 
 // setup express middleware
