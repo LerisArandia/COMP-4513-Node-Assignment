@@ -5,6 +5,7 @@ const MovieModel = require('../models/Movie.js');
 const BriefModel = require('../models/Brief.js');
 const helper = require('./helpers.js');
 const mongoose = require('mongoose');
+const _ = require('lodash');
 
 const router = express.Router();
 
@@ -92,6 +93,44 @@ router.get('/brief', helper.ensureAuthenticated, (req, resp) => {
       }
    })
 })
+
+// get user favorites
+router.get('/favorites/:id', helper.ensureAuthenticated, (req, resp) => {
+   UserModel.find({ id: req.params.id }, (err, data) => {
+      if (err) {
+         resp.json({ message: 'User not found' });
+      } else {
+         console.log(data.favorites);
+         resp.json(data[0].favorites);
+      }
+   });
+})
+
+// post a new favorite
+router.post('/favorites/:id', helper.ensureAuthenticated, (req, resp) => {
+   UserModel.find({ id: req.params.id }, (err, data) => {
+      if (err) {
+         resp.json({ message: 'User not found' });
+      } else {
+         data[0].favorites.push(req.body);
+         resp.json(data[0].favorites);
+      }
+   });
+})
+
+// delete a favorite
+router.delete('/favorites/:id'), helper.ensureAuthenticated, (req, resp) => {
+   UserModel.find({ id: req.params.id }, (err, data) => {
+      const movieToDelete = req.body.id;
+      let index = _.findIndex(data[0].favorites, ['id', movieToDelete]);
+      if (index < 0) {
+         resp.json({ message: 'User not found' });
+      } else {
+         _.remove(data[0].favorites, _.find(data[0].favorites, ['id', movieToDelete]));
+         resp.json(data[0].favorites);
+      }
+   });
+}
 
 
 

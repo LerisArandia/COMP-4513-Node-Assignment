@@ -4,6 +4,7 @@ import './App.css';
 import Home from "./component/Home.js";
 import MovieDetailsView from "./component/MovieDetailsView.js";
 import { Route, Switch } from 'react-router-dom';
+import Profile from "./component/Profile.js";
 // import CastView from "./component/CastView.js";
 import {
   CSSTransition,
@@ -96,6 +97,7 @@ class App extends React.Component {
               </CSSTransition>
             </TransitionGroup>
           )} />
+          <Route path="/profile" exact component={Profile} />
           <Route path="/moviedetails" exact component={MovieDetailsView} />
           {/* <Route path="/castview" exact component={CastView} /> */}
           {/* <DefaultView movies={this.state.movies} addsFav={this.addToFavorite} /> */}
