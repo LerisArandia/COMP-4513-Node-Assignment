@@ -88,7 +88,7 @@ class App extends React.Component {
                 classNames="fade"
               >
                 <Switch location={location}>
-                  <Route path="/" exact component={Home} />
+                  <Route path="/home" exact component={Home} />
                   <Route path="/default" exact render={() =>
                     <DefaultView loaded={this.state.loaded} movies={this.state.movies} favsList={this.state.favorites} addsFav={this.addToFavorite} deletesFav={this.deleteFromFavorite} />
                   } />
