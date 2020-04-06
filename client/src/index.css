@@ -1,0 +1,120 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+a{
+  text-decoration-line: none;
+}
+
+a:hover{
+  cursor: pointer;
+}
+
+button{
+  background-color: var(--light-orange-focus);  
+  border: solid 1px var(--orange-focus);
+  margin: 1em;
+}
+
+button:hover{
+  background-color: white;
+  cursor: pointer;
+}
+
+.Overlay{
+  position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  background-color: var(--dark-box-background);
+}
+/* 
+.bm-item {
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 10px;
+  color: #d1d1d1;
+  transition: color 0.2s;
+} */
+
+.bm-item:hover {
+  color: white;
+}
+
+.bm-burger-button {
+  position: absolute;
+  width: 36px;
+  height: 30px;
+  left: 50px;
+  top: 25em;
+  z-index: -1;
+}
+
+.bm-burger-bars {
+  background: #373a47;
+}
+
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+.bm-cross {
+  background: #bdc3c7;
+}
+
+.bm-menu {
+  position: relative;
+  background: #373a47;
+  padding: 2.5em 1.5em 6em 1.5em;
+  font-size: 1em;
+}
+
+/* .bm-morph-shape {
+  fill: #373a47;
+} */
+
+.bm-item-list {
+  color: #b8b7ad;
+  margin: 0em;
+  padding: 0em;
+}
+
+:root{
+  --dark-box-background: rgb(34, 51, 66);
+  --light-box-background: rgb(57, 85, 110);
+  --dark-box-elements: rgb(22, 33, 43);
+  --light-box-elements: rgb(49, 67, 83);
+  --blue-focus: rgb(172, 200, 223);
+  --orange-focus: rgb(255, 164, 89);
+  --light-orange-focus: rgb(247, 197, 157);
+  --light-blue: rgb(222, 227, 236);
+}
+
+@media only screen and (max-width: 800px){
+  .Overlay{
+    display: none;
+  }
+  .bm-menu{
+    width: 100%;
+  }
+  .bm-burger-button {
+    width: 26px;
+    height: 20px;
+    left: 15em;
+    text-align: center;
+    top: 2em;
+  }
+}
