@@ -30,10 +30,14 @@
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "lodash": "^4.17.15",
+    "mongod": "^2.0.0",
+    "mongodb": "^3.5.5",
     "mongoose": "^5.9.7",
+    "mquery": "^3.2.2",
     "p-try": "^2.2.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "react": "^16.13.1",
     "react-app": "^1.1.2",
     "react-app-rewired": "^2.1.5",
     "react-burger-menu": "^2.6.13",
@@ -41,6 +45,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.1",
     "react-transition-group": "^4.3.0",
+    "readdirp": "^3.4.0",
     "yargs": "^15.3.1"
   },
   "devDependencies": {
