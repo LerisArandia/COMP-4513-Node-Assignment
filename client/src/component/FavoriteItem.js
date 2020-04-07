@@ -1,5 +1,4 @@
 import React from 'react';
-// import Favorites from './FavoriteItem.js';
 import { Link } from 'react-router-dom';
 import { Popover, Button } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';

@@ -79,6 +79,9 @@ class MovieDetailsView extends React.Component {
 
     render() {
         let component = "";
+
+        const { Content, Footer } = Layout;
+
         if (!this.state.showCast) {
             component = <MovieDetails movieData={this.state.movieData} addFav={this.addToFav} />;
         } else { component = <CastView id={this.state.castMember} close={this.castViewOff} />; }
@@ -87,23 +90,25 @@ class MovieDetailsView extends React.Component {
         if (this.state.loaded) {
             return (
                 <Layout className="layout">
-                        <HeaderApp />
+                    <HeaderApp />
+                    <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
                         <Favorites favs={this.state.favs} delete={this.deleteFav} />
                         <div id="movie-details">
-                            {console.log(this.state.castMember)}
-                            {console.log("^^^^^^^^^^ castMember in details view")}
                             {component}
                             <DetailTabs movieData={this.state.movieData} toggle={this.castViewOn} />
                         </div>
+                    </Content>
                 </Layout>
             );
         }
         else {
             return (
                 <Layout className="layout">
-                    <HeaderApp />
-                    <Favorites favs={this.state.favs} delete={this.deleteFav} />
-                    <span><i className="fas fa-spinner fa-spin"></i></span>
+                    <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
+                        <HeaderApp />
+                        <Favorites favs={this.state.favs} delete={this.deleteFav} />
+                        <span><i className="fas fa-spinner fa-spin"></i></span>
+                    </Content>
                 </Layout>
             );
         }
