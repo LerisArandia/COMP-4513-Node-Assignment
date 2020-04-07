@@ -98,6 +98,7 @@ class MovieDetailsView extends React.Component {
                             <DetailTabs movieData={this.state.movieData} toggle={this.castViewOn} />
                         </div>
                     </Content>
+                    <Footer style={{ textAlign: 'center' }}>COMP 4513 Assignment 2 ©2018 Created by Leris Arandia, Jamie Wong, Natnael Beshawered</Footer>
                 </Layout>
             );
         }
@@ -109,6 +110,7 @@ class MovieDetailsView extends React.Component {
                         <Favorites favs={this.state.favs} delete={this.deleteFav} />
                         <span><i className="fas fa-spinner fa-spin"></i></span>
                     </Content>
+                    <Footer style={{ textAlign: 'center' }}>COMP 4513 Assignment 2 ©2018 Created by Leris Arandia, Jamie Wong, Natnael Beshawered</Footer>
                 </Layout>
             );
         }
