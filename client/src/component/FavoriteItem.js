@@ -1,45 +1,32 @@
 import React from 'react';
 // import Favorites from './FavoriteItem.js';
 import { Link } from 'react-router-dom';
+import { Popover, Button } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 
 
 class FavoriteItem extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handleHover = this.handleHover.bind(this);
-        this.state = {
-            hovering: false
-        };
-    }
-
     delete = () => {
         console.log('delete favItem');
         this.props.deleteFav(this.props.poster);
     }
 
-    handleHover() {
-        this.setState(this.toggleHoverState);
-    }
-
-    toggleHoverState(state) {
-        return {
-            hovering: !state.hovering,
-        };
-    }
-
     render() {
+        const content = (
+            <Button type="link" danger onClick={this.delete} icon={<DeleteOutlined />}/>
+        );
+
         return (
-            <div id="favImg"
-                onMouseEnter={this.handleHover}
-                onMouseLeave={this.handleHover}>
-                <Link to={{
-                    pathname: '/moviedetails',
-                    state: { id: this.props.poster.id, favsList: this.props.favsList }
-                }}>
-                    <img src={`https://image.tmdb.org/t/p/w92/${this.props.poster.poster}`} style={{ margin: '0.3em' }} />
-                </Link>
-                {this.state.hovering && <div id="favDelete" onClick={this.delete}>&#10006;</div>}
-            </div>
+            <Popover content={content} trigger="hover">
+                <div>
+                    <Link to={{
+                        pathname: '/moviedetails',
+                        state: { id: this.props.poster.id, favsList: this.props.favsList }
+                    }}>
+                        <img src={`https://image.tmdb.org/t/p/w92/${this.props.poster.poster}`} style={{ margin: '0.3em' }} />
+                    </Link>
+                </div>
+            </Popover>
         )
     }
 }

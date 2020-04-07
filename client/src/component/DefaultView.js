@@ -16,7 +16,6 @@ class DefaultView extends React.Component {
         this.state.homeSearch = '';
     }
 
-
     addFav = (poster) => { // takes a whole movie object
         this.props.addsFav(poster);
     }
@@ -131,7 +130,7 @@ class DefaultView extends React.Component {
     }
 
     render() {
-        const { Content } = Layout;
+        const { Content , Footer } = Layout;
         if (this.props.loaded) {
             if (!this.state.showFiltered) {
                 return (
@@ -141,6 +140,7 @@ class DefaultView extends React.Component {
                             <Favorites favs={this.props.favsList} delete={this.deleteFav} />
                             <MovieList loaded={this.props.loaded} filterRating={this.filterRating} filterYear={this.filterYear} filterTitle={this.filterTitle} favsList={this.props.favsList} movies={this.props.movies} addFav={this.addFav} filterMovie={this.filterMovie} clearFilter={this.clearFilter} />
                         </Content>
+                        <Footer style={{ textAlign: 'center' }}>COMP 4513 Assignment 2 ©2020 Created by Leris Arandia, Jamie Wong, Natnael Beshawered</Footer>
                     </Layout>
                 );
             }
@@ -152,6 +152,7 @@ class DefaultView extends React.Component {
                             <Favorites favs={this.props.favsList} delete={this.deleteFav} />
                             <FilteredMovieList loaded={this.props.loaded} filterRating={this.filterRating} filterYear={this.filterYear} filterTitle={this.filterTitle} favsList={this.props.favsList} movies={this.state.filteredMovies} addFav={this.addFav} filterMovie={this.filterMovie} clearFilter={this.clearFilter} />
                         </Content>
+                        <Footer style={{ textAlign: 'center' }}>COMP 4513 Assignment 2 ©2018 Created by Leris Arandia, Jamie Wong, Natnael Beshawered</Footer>
                     </Layout>
                 );
             }
@@ -163,6 +164,7 @@ class DefaultView extends React.Component {
                         <Favorites favs={this.props.favs} />
                         <span><i className="fas fa-spinner fa-spin"></i></span>
                     </Content>
+                    <Footer style={{ textAlign: 'center' }}>COMP 4513 Assignment 2 ©2018 Created by Leris Arandia, Jamie Wong, Natnael Beshawered</Footer>
                 </Layout>
             );
 
