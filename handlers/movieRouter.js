@@ -4,7 +4,7 @@ const helper = require('./helpers.js');
 const router = express.Router();
 
 //handle all movies
-router.get('/api/movies', helper.ensureAuthenticated, (req, resp) => {
+router.get('/api/movies', (req, resp) => {
     MovieModel.find({}, function (err, data) {
         if (err) {
             resp.json({ message: 'Unable to conntec to Movies' });
@@ -30,7 +30,7 @@ router.get('/api/movies', helper.ensureAuthenticated, (req, resp) => {
 // };
 
 //handle request for a single movie with specific id
-router.get('/api/movies/:id', helper.ensureAuthenticated, (req, resp) => {
+router.get('/api/movies/:id', (req, resp) => {
     MovieModel.find({ 'id': req.params.id }, function (err, data) {
         if (err) {
             resp.json({ message: "Movie Not Found" });
