@@ -5,6 +5,7 @@ import DetailTabs from './DetailTabs.js';
 import Favorites from './Favorites.js';
 import CastView from './CastView.js';
 import "../css/MovieDetails.css";
+import { Row, Col } from 'antd';
 
 import { Layout } from 'antd';
 
@@ -93,10 +94,13 @@ class MovieDetailsView extends React.Component {
                     <HeaderApp />
                     <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
                         <Favorites favs={this.state.favs} delete={this.deleteFav} />
-                        <div id="movie-details">
-                            {component}
-                            <DetailTabs movieData={this.state.movieData} toggle={this.castViewOn} />
-                        </div>
+                        <Row id="movie-details">
+                            <Col flex="3">{component}</Col>
+                            <Col flex="auto"><DetailTabs movieData={this.state.movieData} toggle={this.castViewOn} /></Col>
+                        </Row>
+                        <Row>
+
+                        </Row>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>COMP 4513 Assignment 2 ©2018 Created by Leris Arandia, Jamie Wong, Natnael Beshawered</Footer>
                 </Layout>

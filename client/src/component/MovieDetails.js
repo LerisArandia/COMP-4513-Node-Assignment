@@ -1,9 +1,8 @@
 import React from "react";
-import Link from 'react-router-dom';
 import Ratings from './Ratings.js';
 import Modal from 'react-modal';
 import ModalHandler from './ModalHandler.js';
-
+import { Row, Col, Divider } from 'antd';
 
 class MovieDetails extends React.Component {
     constructor(props) {
@@ -43,13 +42,12 @@ class MovieDetails extends React.Component {
         } else { genres = <div>No genre information available!</div> }
 
         return (
-            <div id="movie-details">
-
+            <Row id="details">
                 <Modal isOpen={this.state.showModal} overlayClassName="Overlay">
                     <ModalHandler page={"details"} poster={this.props.movieData.poster} closeModal={this.closeModal}></ModalHandler>
                 </Modal>
 
-                <div id="movie-details-column-1">
+                <Col flex="2" className="detailsCol">
                     <h1>{this.props.movieData.title}</h1>
                     <div id="poster">
                         <img src={imgUrl} onClick={this.openModal} />
@@ -57,13 +55,11 @@ class MovieDetails extends React.Component {
                             {this.props.movieData.tagline}<br />({this.props.movieData.runtime} mins)
                         </div>
                     </div>
-                </div>
-                <div id="movie-details-column-2">
+                </Col>
+                <Col flex="3" className="detailsCol">
                     <div style={{ textAlign: 'right' }}>
-
                         <button onClick={this.addFav} >Add To Favorites</button>
                     </div>
-
                     <div id="details-details">
                         <div>
                             It was released in {this.props.movieData.release_date} and had a revenue of ${this.props.movieData.revenue}.<br />
@@ -96,8 +92,8 @@ class MovieDetails extends React.Component {
                     <div id="details-genres">
                         {genres}
                     </div>
-                </div >
-            </div >
+                </Col>
+            </Row >
         );
     }
 

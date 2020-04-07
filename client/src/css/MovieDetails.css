@@ -1,15 +1,23 @@
 #movie-details{
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    background: var(--light-blue);
-    font-size: 0.9em;
-    padding: 0em 1.5em 1em 1.5em;
+    margin: 5em 4em 2em 4em;
+    background-color: white;
+    padding: 1em;
 }
 
-#movie-details-column-1-2{
+.site-layout{
+    background-color: #fff0f1;
+}
+
+#details{
+    padding-right:1em;
+}
+
+.detailsCol{
+    padding: 1em;
+}
+/* #movie-details-column-1-2{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    /* padding: 2.3em; */
 }
 
 button{
@@ -18,7 +26,6 @@ button{
 
 #movie-details-column-1{
     grid-column: 1/span 1;
-    /* padding: 1em; */
     text-align: center;
     font-size: 0.8em;
 }
@@ -81,7 +88,7 @@ div#country, div#company{
     border: 1px solid;
     padding: 0.3em;
     background: white;
-}
+} */
 
 .fa-spinner{
     width: 20px;
