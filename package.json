@@ -31,6 +31,7 @@
     "less-loader": "^5.0.0",
     "lodash": "^4.17.15",
     "mongoose": "^5.9.7",
+    "p-try": "^2.2.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "react-app": "^1.1.2",
