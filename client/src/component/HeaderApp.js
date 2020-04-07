@@ -6,7 +6,6 @@ import logo from '../img/logo.png';
 import { Layout, Menu } from 'antd';
 
 
-
 class HeaderApp extends React.Component {
 
     constructor(props) {
