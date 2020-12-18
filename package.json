@@ -33,7 +33,7 @@
     "mongod": "^2.0.0",
     "mongodb": "^3.5.5",
     "mongoose": "^5.9.7",
-    "mquery": "^3.2.2",
+    "mquery": "^3.2.3",
     "p-try": "^2.2.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
